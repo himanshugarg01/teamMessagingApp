@@ -60,23 +60,23 @@ function getChannel(req,res)
    })
 }
 
-// function CurrentUser(req,res)
-// {
-//   users.findOne({
-//     'userName' : req.session.userName,
-  
-//   }).populate('communitie')
-//   .then(data => {
-//      res.send({data : data,success : true});
-     
-//    })
-//    .catch(err => {
-//      console.error(err)
-     
-//      res.send({success : false});
-//      //res.send(error)
-//    })
-// }
+  function currentUser(req,res)
+  {
+    users.findOne({
+      'userName' : req.session.userName,
+    
+    }).populate('requests')
+    .then(data => {
+      res.send({data : data,success : true});
+      
+    })
+    .catch(err => {
+      console.error(err)
+      
+      res.send({success : false});
+      //res.send(error)
+    })
+  }
 
 
 function getChannelForSearch(req,res)
@@ -134,6 +134,7 @@ function getUsers(req,res)
     // createdBy : {'$ne' :req.session.userName},
     //userName : {'$ne' :req.session.userName },
     channels :{'$ne' :channel._id },
+    requests : {'$ne' :channel._id},
   })
   .then(data => {
     //  console.log(data)
@@ -181,7 +182,7 @@ function addUser(req, res){
     _id : channel._id,
   },
   {
-    $push : {users : user._id },
+    $push : {invites : user._id },
   })
   .then(data => {
     //console.log("add channel   ",data);
@@ -195,7 +196,7 @@ function addUser(req, res){
     userName : user.userName,
   },
   {
-    $push : {channels : channel._id }
+    $push : {requests : channel._id }
   })
   .then(data => {
     res.send({success:true});
@@ -209,7 +210,7 @@ function addUser(req, res){
 
 function joinChannel(req, res){
   
-    
+  let data;
   let {channel} = req.body;
          
   channels.findOneAndUpdate({
@@ -217,8 +218,10 @@ function joinChannel(req, res){
   },
   {
     $push : {users : req.session.Id },
+    $pull : {invites : req.session.Id},
   })
-  .then(data => {
+  .then(com => {
+    data=com;
     //console.log("add channel   ",data);
     //  res.json({data})
     })
@@ -230,10 +233,11 @@ function joinChannel(req, res){
     userName : req.session.userName,
   },
   {
-    $push : {channels : channel._id }
+    $push : {channels : channel._id },
+    $pull : {requests : channel._id},
   })
-  .then(data => {
-    res.send({success:true});
+  .then(user => {
+    res.send({data : data,success:true});
     })
   .catch(err => {
     res.json({error: true});
@@ -251,5 +255,6 @@ module.exports = {
     searchUser,
     addUser,
     joinChannel,
+    currentUser,
 
 }

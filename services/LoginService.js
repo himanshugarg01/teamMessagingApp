@@ -12,7 +12,7 @@ function LoginService(req, res){
     users.findOne({
         userName : userName,
         password : password,
-    })
+    }).populate('requests')
     .then(data => {
           req.session.islogin=1;
           req.session.userName=data.userName;

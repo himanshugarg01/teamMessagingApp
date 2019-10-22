@@ -6,6 +6,10 @@ router.use(flash());
 router.get('/getChannel', (req, res) => {
     services.ChannelService.getChannel(req, res);
 })
+router.get('/currentUser', (req, res) => {
+    services.ChannelService.currentUser(req, res);
+})
+
 
 router.post('/add', (req, res) => {
     services.ChannelService.addChannel(req, res);
@@ -29,5 +33,6 @@ router.post('/addUser', (req, res) => {
 router.post('/joinChannel', (req, res) => {
     services.ChannelService.joinChannel(req, res);
 })
+
 
 module.exports = router;

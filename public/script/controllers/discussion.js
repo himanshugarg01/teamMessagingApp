@@ -56,8 +56,9 @@ app.controller("discussionController", ["$scope","$rootScope","$http","$location
         }).then(function successCallback(res) {
             if(res.data.success)
             {
-              alert("message success");
+             // alert("message success");
               $scope.messages=[res.data.data].concat($scope.messages);
+              $scope.discussionBody="";
             }
             else
             {

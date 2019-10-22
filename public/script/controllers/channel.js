@@ -156,7 +156,7 @@ $scope.addUser=function(user)
       }).then(function successCallback(res) {
           if(res.data.success)
           {
-            alert("User Added");
+            alert("User Invited");
             //$scope.getUsers();
             for(let i=0;i<$scope.users.length;i++)
             {
@@ -179,19 +179,19 @@ $scope.addUser=function(user)
 
 $scope.getCurrentUser=function()
 {
-  if($scope.currentUser)
-  {
-
-  }
-  else
+  console.log("currentUser called");
+  
+  if($scope.currentUser==undefined)
   {
     $http({
         method: 'GET',
-        data : {user : user,channel : $scope.channel},
+       
         url: '/channel/currentUser'
       }).then(function successCallback(res) {
           if(res.data.success)
           {
+            console.log("currentUser");
+            
             $scope.currentUser=res.data.data;
           }
           
@@ -202,6 +202,44 @@ $scope.getCurrentUser=function()
   }
     
 }
+
+
+$scope.joinChannel=function (channel)
+ {
+    //console.log($scope.channelName,$scope.description);
+     
+
+     $http({
+         method: 'POST',
+         data : {channel : channel},
+         url: '/channel/joinChannel'
+       }).then(function successCallback(res) {
+           if(res.data.success)
+           {
+             
+             
+             alert("Channel Joined");
+             $scope.channels.push(res.data.data);
+            for(let i=0;i<$scope.currentUser.requests.length;i++)
+            {
+              if($scope.currentUser.requests[i]==channel)
+              {
+                $scope.currentUser.requests.splice(i,1);
+                break;
+              }
+            }
+            //  console.log(res.data.data);
+            //  $scope.channels=res.data.data;
+           }
+           
+
+           
+         }, function errorCallback(response) {
+           console.log("err");
+           
+         });
+     
+ }
 
 
   $scope.setChannel=setChannel;

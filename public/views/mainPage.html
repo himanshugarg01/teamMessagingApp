@@ -262,7 +262,7 @@
  
       
       <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
-      <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >MeetGreet</a>   
+      <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>   
       </nav>
        <!-- Modal -->
   <div class="modal fade" id="addChannel" role="dialog">
@@ -381,15 +381,15 @@
           <div class="modal-content">
             <div class="modal-header">
               
-              <h4 class="modal-title">Invites</h4>
+              <h4 class="modal-title">Requests</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" >
    
                     <div class="form-group">
-                        <h4 ng-bind="channel.name"></h4>
+                        
                     </div>
-                    <hr>
+                   
                     <div class="form-group">
                             <!-- <label style="color:#707070">Description</label> -->
                           
@@ -398,12 +398,17 @@
 
             
             <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
-              <ul ng-repeat="invite in currentUser.channels track by $index">
+              <ul ng-repeat="req in currentUser.requests track by $index">
                 <li >
                   <div>
-                  {{invite}}
+                  {{req.name}}
+                  <br>
+                  <div ng-repeat="tag in req.tags" style="float:left">
+                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+
+                  </div>
                   
-                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Add</button>
+                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="joinChannel(req)" >Accept</button>
                 </div>
                 <hr>
                 </li>
@@ -411,7 +416,7 @@
             </div>
           </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="getCurrentUser()">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
             </div>
           </div>
           
@@ -445,9 +450,7 @@
         <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
           <i class="fa fa-search fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " data-toggle="modal" data-target="#invites" href="#">
-          <i class="fa fa-bell fa-set" style="font-size: 14px;"></i>
-        </a>
+       
         
     </div>
     </div>
@@ -457,9 +460,14 @@
       <div class="panel panel-default allSidesSoft channel-panel-main-div">
         <div class="panel-heading channel-panel-heading">
   
-            <p style="color:white;margin-top:6px;font-weight:bold">My Channels</p>
-            <button type="button" class="btn btn-info channel-panel-btn" data-toggle="modal" data-target="#addChannel" style="float:right;margin:-35px 5px 0 0">Create</button>
-  
+            <p style="color:white;margin-top:6px;font-weight:bold">My Channels  
+              <a class="btn channel-head-btn" style="margin-left:10px;float : right;font-size: 14px; " data-toggle="modal" data-target="#invites" ng-click="getCurrentUser()" href="#">
+                Requests
+              </a>
+            </p>
+           
+            <button class="btn btn-info channel-panel-btn" data-toggle="modal" data-target="#addChannel" style="float:right;margin:-30px 5px 0 0">Create</button>
+            
         </div>
         <div class="panel-body" style="padding-bottom:0">
   
