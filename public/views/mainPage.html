@@ -1,0 +1,506 @@
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+   
+   <link rel="stylesheet" href="  https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+   
+
+   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+  
+   
+<style media="screen">
+    .fa-set{
+      font-size : 14px;
+      padding-right : 0px;
+    }
+    .btn{
+      border-radius : 0;
+    }
+    #page-content-wrapper {
+      left : 0px;
+      position: absolute;
+      padding: 15px;
+      width: 100%;
+      overflow-x: hidden;
+  }
+  .channel-header-top {
+      width: 100%;
+      background-image: linear-gradient(to bottom, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+      height: 180px;
+  }
+  .channel-head-btn {
+      background-color: rgba(255,255,255,0.1);
+      color: #fff;
+      margin-left: 100px;
+      border: 1px solid #fff;
+  }
+  a.active-icon {
+      border: 1px solid #fff !important;
+      color: #fff !important;
+      border-bottom: 4px solid #fff !important;
+      background-color: rgba(255,255,255,0.1) !important;
+  }
+  .channel-panel-main-div {
+      border: 0;
+      border-radius: 0;
+      margin-top: 50px;
+  }
+  .channel-panel-heading {
+      border-radius: 0;
+      background-image: linear-gradient(to top, #4ba2b7, #42a6be, #38aac6, #29adcd, #0fb1d5);
+  }
+  .channel-panel-btn {
+      color: #fff;
+      background: transparent;
+      border-color: #fff;
+      transition: all .4s ease;
+      -webkit-transition: all .4s ease;
+  }
+  .channel-div {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-color: #CCCCCC;
+  }
+  .comnametxt {
+      margin-top: 25px;
+      font-weight: 600;
+      /* color: #7D7D7D; */
+      text-decoration: none;
+      word-wrap: break-word;
+      text-transform: capitalize;
+  }
+  .channel-div {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-color: #CCCCCC;
+  }
+  .channel-short-btn {
+      float: right;
+      margin-top: 25px;
+      color: #7D7D7D;
+      font-size: 15px;
+      cursor: pointer !important;
+      float: right;
+      text-decoration: none;
+      text-transform: capitalize;
+  }
+  .comnametxt {
+      margin-top: 25px;
+      font-weight: 600;
+      /* color: #7D7D7D; */
+      text-decoration: none;
+      word-wrap: break-word;
+      text-transform: capitalize;
+      color: #337ab7;
+  }
+  a {
+      color: #337ab7;
+      text-decoration: none;
+  }
+  </style>
+
+<style>
+    body{
+      margin: 0;
+      padding: 0;
+      line-height: 1.42857143;
+      background: rgb(249, 249, 249);
+    }
+    .d1{
+      overflow: visible;
+      background-color: #222D3C;
+      height: 60px;
+      width: 100%;
+      display: block;
+        padding: 0px 15px;
+        position: fixed;
+    }
+    .d1 a{
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding-left: 20px;
+      padding-right: 50px;
+      text-decoration: none;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .d1 span{
+      color: white;
+    }
+    .d1 div{
+      box-sizing: border-box;
+    }
+    .d2{
+      height: 100%;
+      width: 50px;
+      position: fixed;
+      z-index: 1;
+      top: 60px;
+      left: 0;
+      background-color: #000000;
+      overflow-x: hidden;
+      transition: 0.5s;
+    }
+    
+    .d2 a{
+      display: block;
+      padding: 11px 4px 11px 15px;
+      text-decoration: none;
+      color: #999999;
+      transition: 0.1s;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 15px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .fa{
+      font-size: 21px;
+      padding-right: 10px;
+    }
+    .d2 a:hover{
+        color :#fff;
+      background-color: #111;
+      border-left: 2px solid;
+      border-left-color: red;
+    }
+    .active{
+      background-color: #337AB7;
+      color: #fff;
+    }
+    .active1{
+    
+      color: #fff;
+    }
+    .d2 img{
+      width: 60px;
+      height: 60px;
+    }
+    #act{
+      color: white;
+    }
+    .sadmin{
+      float: right;
+      padding: .2em .6em .3em;
+      font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+      border-radius: 4px;
+    }
+    
+    /*img{
+      cursor: pointer;
+        width: 40px;
+        margin-left: 30px;
+        margin-right: 10px;
+      margin-top: 10px;
+        float: right;
+        border-radius: 50%;
+    }*/
+    
+    
+    .divprofile{
+    
+      padding-top: 20px;
+      padding-left: 70px;
+      transition: 0.5s;
+    }
+    
+    #menu-dp{
+      padding-top: 5px;
+      display: none;
+    }
+    @media(min-width : 768px) {
+      .d2{
+        width: 50px;
+      }
+    
+    }
+    @media(max-width : 768px) {
+    .d2{
+      width: 0px;
+    }
+    
+    .divprofile{
+      margin-left: 0px;
+      padding-left: 0px;
+    }
+    .fa {
+    font-size: 14px;
+    }
+    #mobile-cq{
+      display: none;
+    }
+    #menu-dp{
+      display: block;
+    }
+    }
+    .tag-still {
+    position: relative;
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    color: #39739d;
+    background-color: #E1ECF4;
+    border-color: #E1ECF4;
+    font-size: 14px;
+}
+    
+    </style>
+ 
+      
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
+      <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >MeetGreet</a>   
+      </nav>
+       <!-- Modal -->
+  <div class="modal fade" id="addChannel" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <h4 class="modal-title">Create Channel</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+              <form  >
+                  <div class="form-group">
+                    Channel Name:
+                      <input class="form-control" type="text" ng-model="channelName" required="" name="channelName" id="channelName" placeholder="Channel Name" maxlength="70">
+                  </div>
+                  <div class="form-group">
+                    Description: 
+                          <!-- <label style="color:#707070">Description</label> -->
+                        <div id="myedit" style="">
+                          <textarea name="" class="form-control" ng-model="description" placeholder="Description" id="" cols="30" rows="10"></textarea>
+  
+                        </div>
+  
+                  </div>
+                  <div class="tag-conatiner-custom-div">
+                    Enter tags :
+                      <select name="tags" ng-model="tags" class="form-control input-sm select2-multiple select2-hidden-accessible" style="width:100%" multiple="" tabindex="-1"  aria-hidden="true" id="tags" >
+                          
+                        </select>
+                      <!-- <select ui-select2 ng-model="select2" data-placeholder="Pick a number">
+                          <option value=""></option>
+                          <option value="one">First</option>
+                          <option value="two">Second</option>
+                          <option value="three">Third</option>
+                      </select> -->
+                   </div>
+              
+                 
+                  
+                  
+  
+                  <div class="form-group" id="dynamic">
+  
+                  </div>
+                  <div class="form-group">
+                          <input class="form-control btn btn-primary" type="submit" ng-click="addChannel()" data-dismiss="modal" value="Create Channel">
+                  </div>
+                </form>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="modal fade" id="addMember" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Add Member</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" >
+   
+                    <div class="form-group">
+                        <h4 ng-bind="channel.name"></h4>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                            <!-- <label style="color:#707070">Description</label> -->
+                          <div >
+                              <input class="form-control" type="text" ng-model="searchUser" required="" ng-change="getSearchUser()" name="search"  placeholder="Search..." >
+    
+                          </div>
+    
+                    </div>
+
+            
+            <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+              <ul ng-repeat="u in users">
+                <li>
+                  <div>
+                  {{u.userName}}
+                  
+                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Add</button>
+                </div>
+                <hr>
+                </li>
+              </ul>
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+
+      
+
+    <div class="modal fade" id="invites" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Invites</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" >
+   
+                    <div class="form-group">
+                        <h4 ng-bind="channel.name"></h4>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                            <!-- <label style="color:#707070">Description</label> -->
+                          
+    
+                    </div>
+
+            
+            <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+              <ul ng-repeat="invite in currentUser.channels track by $index">
+                <li >
+                  <div>
+                  {{invite}}
+                  
+                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Add</button>
+                </div>
+                <hr>
+                </li>
+              </ul>
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="getCurrentUser()">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+    
+    <div class="divprofile" id="divprofile">
+   
+    <div id="page-content-wrapper" style="padding:0;margin-top:42px;"> <!--Margin Top is new-->
+             <div class="container-fluid page-content-div" style="padding:0">
+                <div class="row">
+                   <div class="col-lg-12 scoll-possible" style="padding:0">
+  
+  
+  
+  
+    <!--====================================================================-->
+    <div class="channel-header-top" style="height:50px;padding-top:6px;">
+    <div class="col-sm-12 channel-sub-head">
+        <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px;" href="/channel">
+          <i class="fa fa-users fa-set" style="font-size: 14px;"></i>
+        </a>
+        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="#">
+          <i class="fa fa-dashcube fa-set" style="font-size: 14px;"></i>
+        </a>
+        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
+          <i class="fa fa-search fa-set" style="font-size: 14px;"></i>
+        </a>
+        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " data-toggle="modal" data-target="#invites" href="#">
+          <i class="fa fa-bell fa-set" style="font-size: 14px;"></i>
+        </a>
+        
+    </div>
+    </div>
+    <!--====================================================================-->
+     <div class="container" style="padding:0">
+    <div class="col-sm-12">
+      <div class="panel panel-default allSidesSoft channel-panel-main-div">
+        <div class="panel-heading channel-panel-heading">
+  
+            <p style="color:white;margin-top:6px;font-weight:bold">My Channels</p>
+            <button type="button" class="btn btn-info channel-panel-btn" data-toggle="modal" data-target="#addChannel" style="float:right;margin:-35px 5px 0 0">Create</button>
+  
+        </div>
+        <div class="panel-body" style="padding-bottom:0">
+  
+            <div id="can-create-channel">
+              <ul ng-repeat="x in channels">
+                <li>
+                  
+                  <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
+                  <br>
+                  <div ng-repeat="tag in x.tags" style="float:left">
+                      <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+
+                  </div>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                  <hr>
+                </li>
+
+              </ul>
+          </div>
+  
+        </div>
+  
+        <div class="panel-body" style="padding-top:0;padding-bottom:0">
+           
+         
+        </div>
+  
+        <div class="panel-body" style="padding-top:0">
+         
+        </div>
+  
+      </div>
+    </div>
+    </div>
+    <br>
+    <!--====================================================================-->
+  
+    </div>
+    </div>
+    </div>
+    </div>
+    
+  </div>
+  
