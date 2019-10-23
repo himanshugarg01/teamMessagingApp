@@ -29,4 +29,9 @@ let channels = new mongoose.Schema({
   timestamps: true,
 });
 
+channels.index({name : 1,users : 1});
+channels.index({tags : 1});
+
+
+
 module.exports = mongoose.model('channels', channels);

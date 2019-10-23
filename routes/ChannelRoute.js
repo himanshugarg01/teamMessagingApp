@@ -17,9 +17,7 @@ router.post('/add', (req, res) => {
 router.post('/search', (req, res) => {
     services.ChannelService.searchChannel(req, res);
 })
-router.get('/getSearch', (req, res) => {
-    services.ChannelService.getChannelForSearch(req, res);
-})
+
 router.post('/getUsers', (req, res) => {
     services.ChannelService.getUsers(req, res);
 })

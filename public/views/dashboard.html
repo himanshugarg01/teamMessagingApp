@@ -265,163 +265,9 @@
       <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>   
       </nav>
        <!-- Modal -->
-  <div class="modal fade" id="addChannel" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            
-            <h4 class="modal-title">Create Channel</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-              <form  >
-                  <div class="form-group">
-                    Channel Name:
-                      <input class="form-control" type="text" ng-model="channelName" required="" name="channelName" id="channelName" placeholder="Channel Name" maxlength="70">
-                  </div>
-                  <div class="form-group">
-                    Description: 
-                          <!-- <label style="color:#707070">Description</label> -->
-                        <div id="myedit" style="">
-                          <textarea name="" class="form-control" ng-model="description" placeholder="Description" id="" cols="30" rows="10"></textarea>
-  
-                        </div>
-  
-                  </div>
-                  <div class="tag-conatiner-custom-div">
-                    Enter tags :
-                      <select name="tags" ng-model="tags" class="form-control input-sm select2-multiple select2-hidden-accessible" style="width:100%" multiple="" tabindex="-1"  aria-hidden="true" id="tags" >
-                          
-                        </select>
-                      <!-- <select ui-select2 ng-model="select2" data-placeholder="Pick a number">
-                          <option value=""></option>
-                          <option value="one">First</option>
-                          <option value="two">Second</option>
-                          <option value="three">Third</option>
-                      </select> -->
-                   </div>
-              
-                 
-                  
-                  
-  
-                  <div class="form-group" id="dynamic">
-  
-                  </div>
-                  <div class="form-group">
-                          <input class="form-control btn btn-primary" type="submit" ng-click="addChannel()" data-dismiss="modal" value="Create Channel">
-                  </div>
-                </form>
-  
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-
-    <div class="modal fade" id="addMember" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              
-              <h4 class="modal-title">Add Member</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" >
-   
-                    <div class="form-group">
-                        <h4 ng-bind="channel.name"></h4>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                            <!-- <label style="color:#707070">Description</label> -->
-                          <div >
-                              <input class="form-control" type="text" ng-model="searchUser" required="" ng-change="getSearchUser()" name="search"  placeholder="Search..." >
-    
-                          </div>
-    
-                    </div>
-
-            
-            <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
-              <ul ng-repeat="u in users">
-                <li>
-                  <div>
-                  {{u.userName}}
-                  
-                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Add</button>
-                </div>
-                <hr>
-                </li>
-              </ul>
-            </div>
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
 
       
 
-    <div class="modal fade" id="invites" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              
-              <h4 class="modal-title">Requests</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body" >
-   
-                    <div class="form-group">
-                        
-                    </div>
-                   
-                    <div class="form-group">
-                            <!-- <label style="color:#707070">Description</label> -->
-                          
-    
-                    </div>
-
-            
-            <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
-              <ul ng-repeat="req in currentUser.requests track by $index">
-                <li >
-                  <div>
-                  {{req.name}}
-                  <br>
-                  <div ng-repeat="tag in req.tags" style="float:left">
-                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
-
-                  </div>
-                  
-                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="joinChannel(req)" >Accept</button>
-                </div>
-                <hr>
-                </li>
-              </ul>
-            </div>
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-            </div>
-          </div>
-          
-        </div>
-      </div>
 
 
 
@@ -441,32 +287,44 @@
     <!--====================================================================-->
     <div class="channel-header-top" style="height:50px;padding-top:6px;">
     <div class="col-sm-12 channel-sub-head">
-        <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px;" href="/channel">
+        <a class="btn channel-head-btn " style="padding-right: 0px; font-size: 14px;" href="/channel">
           <i class="fa fa-users fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/dashboard">
+        <a class="btn channel-head-btn active-icon" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="#">
           <i class="fa fa-dashcube fa-set" style="font-size: 14px;"></i>
         </a>
         <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
           <i class="fa fa-search fa-set" style="font-size: 14px;"></i>
         </a>
        
+        <div style="width: 200px; float: right; margin-right: 300px;">
+        <input class="form-control dobDate"  name="" ng-model="dateTo" ng-change="dashboard()" placeholder="YYYY/MM/DD"  type="date" autocomplete="off" required="">
+        </div>
+        <div style="width: 30px; float: right; color: white;">
+          <h5>To : </h5>
+        </div>
+        <div style="width: 200px; float: right; margin-right: 70px;">
+        <input class="form-control dobDate"  ng-model="dateFrom" placeholder="YYYY/MM/DD" ng-change="dashboard()" type="date" autocomplete="off" required="">
+        </div>
+        <div style="width: 50px; float: right;color: white;">
+          <h5>From : </h5>
+        </div>
+        </div>
+       
         
     </div>
     </div>
     <!--====================================================================-->
      <div class="container" style="padding:0">
-    <div class="col-sm-12">
-      <div class="panel panel-default allSidesSoft channel-panel-main-div">
-        <div class="panel-heading channel-panel-heading">
+      <div class="col-sm-12">
+        <div class="panel panel-default allSidesSoft channel-panel-main-div">
+          <div class="panel-heading channel-panel-heading">
   
-            <p style="color:white;margin-top:6px;font-weight:bold">My Channels  
-              <a class="btn channel-head-btn" style="margin-left:10px;float : right;font-size: 14px; " data-toggle="modal" data-target="#invites" ng-click="getCurrentUser()" href="#">
-                Requests
-              </a>
+            <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Channels  
+            
             </p>
            
-            <button class="btn btn-info channel-panel-btn" data-toggle="modal" data-target="#addChannel" style="float:right;margin:-30px 5px 0 0">Create</button>
+           
             
         </div>
         <div class="panel-body" style="padding-bottom:0">
@@ -489,11 +347,112 @@
           </div>
   
         </div>
-
   
 
   
       </div>
+      <div class="panel panel-default allSidesSoft channel-panel-main-div">
+        <div class="panel-heading channel-panel-heading">
+
+          <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Tags 
+          
+          </p>
+         
+         
+          
+      </div>
+      <div class="panel-body" style="padding-bottom:0">
+
+          <div id="can-create-channel">
+            <ul ng-repeat="x in channels">
+              <li>
+                
+                <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
+                <br>
+                <div ng-repeat="tag in x.tags" style="float:left">
+                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+
+                </div>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                <hr>
+              </li>
+
+            </ul>
+        </div>
+
+      </div>
+
+
+
+    </div>
+      <div class="panel panel-default allSidesSoft channel-panel-main-div">
+          <div class="panel-heading channel-panel-heading">
+
+            <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Regions 
+            
+            </p>
+          
+          
+            
+        </div>
+        <div class="panel-body" style="padding-bottom:0">
+
+            <div id="can-create-channel">
+              <ul ng-repeat="x in channels">
+                <li>
+                  
+                  <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
+                  <br>
+                  <div ng-repeat="tag in x.tags" style="float:left">
+                      <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+
+                  </div>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                  <hr>
+                </li>
+
+              </ul>
+          </div>
+
+        </div>
+
+
+
+      </div>
+      <div class="panel panel-default allSidesSoft channel-panel-main-div">
+        <div class="panel-heading channel-panel-heading">
+
+          <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Users  
+          
+          </p>
+        
+        
+          
+      </div>
+    <div class="panel-body" style="padding-bottom:0">
+
+          <div id="can-create-channel">
+            <ul ng-repeat="x in channels">
+              <li>
+                
+                <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
+                <br>
+                <div ng-repeat="tag in x.tags" style="float:left">
+                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+
+                </div>
+                <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                <hr>
+              </li>
+
+            </ul>
+        </div>
+
+      </div>
+
+
+
+    </div>
     </div>
     </div>
     <br>

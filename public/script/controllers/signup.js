@@ -7,6 +7,7 @@ app.controller("signupController", ["$scope","$http","$location", function ($sco
   $scope.password1="";
   $scope.firstName="";
   $scope.lastName="";
+  $scope.region="";
   $scope.incorrectUName=false;
   function signUp()
   {
@@ -16,8 +17,14 @@ app.controller("signupController", ["$scope","$http","$location", function ($sco
       {  
           $http({
               method: 'POST',
-              data : {userName : $scope.userName,password : $scope.password,firstName : $scope.firstName,lastName : $scope.lastName},
-              url: '/signup'
+              data : {
+                userName : $scope.userName,
+                password : $scope.password,
+                firstName : $scope.firstName,
+                lastName : $scope.lastName,
+                region : $scope.region
+            },
+          url: '/signup'
           }).then(function successCallback(res) {
               console.log(res);
               

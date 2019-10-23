@@ -53,9 +53,13 @@ app.config(["$routeProvider","$locationProvider","$httpProvider",function ($rout
           controller: "searchChannelController"
           })
         .when("/channel/discuss/:id", {
-        templateUrl: "./views/discussion.html",
-        controller: "discussionController"
-        })
+          templateUrl: "./views/discussion.html",
+          controller: "discussionController"
+          })
+        .when("/dashboard", {
+          templateUrl: "./views/dashboard.html",
+          controller: "dashboardController"
+          })
       .otherwise({
           redirectTo: "/"
       });

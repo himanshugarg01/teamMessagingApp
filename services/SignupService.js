@@ -3,7 +3,7 @@ let users = require('../model/users');
 function SignupServices(req, res){
   
     
-    let {firstName, lastName,emailId, userName, password} = req.body;
+    let {firstName, lastName,emailId, userName, password,region} = req.body;
     console.log(req.body);
     users.find({
        "userName" : userName
@@ -19,7 +19,9 @@ function SignupServices(req, res){
                     'lastName' : lastName,
                     'emailId' : emailId,
                     'userName' : userName,
-                     'password' : password,
+                    'password' : password,
+                    'region' : region,
+
                 });
                 newUser.save().then(data => {
             //    req.flash('info', 'Signed up successfully!')

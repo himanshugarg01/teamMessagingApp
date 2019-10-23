@@ -1,53 +1,67 @@
 app.controller("searchChannelController", ["$scope","$rootScope","$http","$location", function ($scope,$rootScope,$http,$location,) {
   
-  $scope.searchString="";
+  
+   
+ $scope.searchString="";
+ $scope.prevSearchString="";
  $scope.channels=[];
 
- $scope.start=20;
+ $scope.start=0;
 
  $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() > $(window).height()+200+($scope.start*80)) {
-     //  $scope.getMessages();
-     console.log("scroll");
-     
+   if($(window).scrollTop() + $(window).height() > $(window).height()+100+($scope.start*60)) {
+       $scope.searchChannel();
+    
        $scope.start+=20;
    }
 });
  
-$scope.getChannel =function getChannel()
- {
-     $http({
-         method: 'GET',
-         url: '/channel/getSearch'
-       }).then(function successCallback(res) {
-           if(res.data.success)
-           {
-             console.log(res.data.data);
-             $scope.channels=res.data.data;
+// $scope.getChannel =function getChannel()
+//  {
+//      $http({
+//          method: 'GET',
+//          url: '/channel/getSearch'
+//        }).then(function successCallback(res) {
+//            if(res.data.success)
+//            {
+//              console.log(res.data.data);
+//              $scope.channels=res.data.data;
              
-           }
+//            }
            
            
-         }, function errorCallback(response) {
-           console.log("err");
+//          }, function errorCallback(response) {
+//            console.log("err");
            
-         });
- }
+//          });
+//  }
 
  function searchChannel()
  {
-    //console.log($scope.channelName,$scope.description);
-     
 
+    if($scope.prevSearchString!=$scope.searchString)
+    {
+
+      $scope.start=0;
+    }
+    
      $http({
          method: 'POST',
-         data : {search : $scope.searchString},
+         data : {search : $scope.searchString,start :$scope.start },
          url: '/channel/search'
        }).then(function successCallback(res) {
            if(res.data.success)
            {
              console.log(res.data.data);
-             $scope.channels=res.data.data;
+             if($scope.start==0)
+             $scope.start+=20;
+             if($scope.prevSearchString!=$scope.searchString)
+             {
+                $scope.channels=[];
+                
+             }
+             $scope.prevSearchString=$scope.searchString;
+             $scope.channels=$scope.channels.concat(res.data.data);
            }
            
 
@@ -94,6 +108,6 @@ $scope.getChannel =function getChannel()
      
  }
 $scope.searchChannel=searchChannel;
- $scope.getChannel();
+ $scope.searchChannel();
  
 }]);

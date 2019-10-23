@@ -79,41 +79,36 @@ function getChannel(req,res)
   }
 
 
-function getChannelForSearch(req,res)
-{
-  channels.find({
-    // createdBy : {'$ne' :req.session.userName},
-    'users' : {'$ne' :req.session.Id },
-    
-  })
-  .then(data => {
-    //  console.log(data)
-    res.send({data : data,success : true});
-    })
-    .catch(err => {
-      console.error(err)
-      res.send({success : false});
-    })
-}
+
 
 function searchChannel(req,res)
 {
-    let {search}=req.body;
-    let findObj;
+    let {search,start}=req.body;
+    let findObj={};
     if(search!='')
-        findObj= {
+    {
+        findObj["$or"]= [{
         "name":  { '$regex' : search, '$options' : 'i' },
         'users' : {'$ne' :req.session.Id },
+       
+        },
+        {
+        "tags":  { '$regex' : search, '$options' : 'i' },
+        'users' : {'$ne' :req.session.Id },
+        },
+        ]
     }
     else{
-        delete findObj;
-        findObj= {
-          'users' : {'$ne' :req.session.Id },
-    }
+    delete findObj["$or"];
+    findObj= {
+      'users' : {'$ne' :req.session.Id },
+      }
     }
 
 
-    channels.find(findObj).then(data => {
+    channels.find(findObj)
+    .skip(start).limit(20)
+    .then(data => {
       //  console.log(data)
       res.send({data : data,success : true});
       })
@@ -249,7 +244,6 @@ function joinChannel(req, res){
 module.exports = {
     addChannel,
     getChannel,
-    getChannelForSearch,
     searchChannel,
     getUsers,
     searchUser,

@@ -24,8 +24,10 @@ function LoginService(req, res){
             
             res.cookie('token',token);
             res.send({data : data ,success : true});
-            //res.redirect('/chat');
+          //  jwt.destroy(token);
+           
           });
+          
          // res.cookie('token' , 'token')
            
          })

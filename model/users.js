@@ -10,6 +10,9 @@ let users = new mongoose.Schema({
     emailId : {
         type : String,
     },
+    region : {
+        type : String,
+    },
     userName: {
         type: String,
         unique: true,
@@ -33,5 +36,7 @@ let users = new mongoose.Schema({
 );
 
 users.index({userName : 1});
+users.index({userName : 1,password : 1});
+
 
 module.exports = mongoose.model('users', users);
