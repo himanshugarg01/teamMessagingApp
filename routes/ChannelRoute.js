@@ -31,6 +31,9 @@ router.post('/addUser', (req, res) => {
 router.post('/joinChannel', (req, res) => {
     services.ChannelService.joinChannel(req, res);
 })
+router.post('/rejectRequest', (req, res) => {
+    services.ChannelService.rejectRequest(req, res);
+})
 
 
 module.exports = router;

@@ -263,9 +263,7 @@ ul{
     </style>
  
       
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
-      <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>   
-      </nav>
+    
        <!-- Modal -->
   <div class="modal fade" id="addChannel" role="dialog">
       <div class="modal-dialog">
@@ -333,7 +331,7 @@ ul{
           <div class="modal-content">
             <div class="modal-header">
               
-              <h4 class="modal-title">Add Member</h4>
+              <h4 class="modal-title">Invite Members</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" >
@@ -358,7 +356,7 @@ ul{
                   <div>
                   {{u.userName}}
                   
-                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Add</button>
+                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="addUser(u)" >Invite</button>
                 </div>
                 <hr>
                 </li>
@@ -383,7 +381,7 @@ ul{
           <div class="modal-content">
             <div class="modal-header">
               
-              <h4 class="modal-title">Requests</h4>
+              <h4 class="modal-title">Join Requests</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body" >
@@ -409,8 +407,12 @@ ul{
                     <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
 
                   </div>
-                  
-                  <button class="btn btn-success" style="margin-right: 20%;margin-left: 80%;" ng-click="joinChannel(req)" >Accept</button>
+                  <br>
+                  <div style="float: right;">
+                  <button class="btn btn-success"  ng-click="joinChannel(req)" >Accept</button>
+                  <button class="btn btn-danger"  ng-click="rejectRequest(req)" >Reject</button>
+                  </div>
+                  <br>
                 </div>
                 <hr>
                 </li>
@@ -464,7 +466,7 @@ ul{
   
             <p style="color:white;margin-top:6px;font-weight:bold">My Channels  
               <a class="btn channel-head-btn" style="margin-left:10px;float : right;font-size: 14px; " data-toggle="modal" data-target="#invites" ng-click="getCurrentUser()" href="#">
-                Requests
+                Join Requests
               </a>
             </p>
            
@@ -477,13 +479,13 @@ ul{
               <ul ng-repeat="x in channels">
                 <li>
                   
-                  <a href="/channel/discuss/{{x._id}}" style="font-size: 20px;">{{x.name}}</a>
+                  <a href="/channel/discuss/{{x._id}}" style="font-size: 20px; color: gray;">{{x.name}}</a>
                   <br>
                   <div ng-repeat="tag in x.tags" style="float:left">
                       <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
 
                   </div>
-                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 80%;" >Invite Members</button>
                   <hr>
                 </li>
 

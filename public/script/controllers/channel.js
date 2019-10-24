@@ -228,8 +228,43 @@ $scope.joinChannel=function (channel)
                 break;
               }
             }
-            //  console.log(res.data.data);
-            //  $scope.channels=res.data.data;
+           
+           }
+           
+
+           
+         }, function errorCallback(response) {
+           console.log("err");
+           
+         });
+     
+ }
+
+
+
+
+ $scope.rejectRequest=function (channel)
+ {
+    //console.log($scope.channelName,$scope.description);
+     
+
+     $http({
+         method: 'POST',
+         data : {channel : channel},
+         url: '/channel/rejectRequest'
+       }).then(function successCallback(res) {
+           if(res.data.success)
+           {
+             
+            for(let i=0;i<$scope.currentUser.requests.length;i++)
+            {
+              if($scope.currentUser.requests[i]==channel)
+              {
+                $scope.currentUser.requests.splice(i,1);
+                break;
+              }
+            }
+           
            }
            
 

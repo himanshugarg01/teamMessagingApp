@@ -42,14 +42,29 @@ function sendMessage(req, res){
 
 function getMessages(req, res){
   
-    
-  let {channel,start} = req.body;
+  let {channel,start,search} = req.body; 
+
+  if(search!='')
+  {
+      var findObj= {
+      "message":  { '$regex' : search, '$options' : 'i' },
+      channel : channel._id,
+     
+      }
+  }
+  else{
+  delete findObj;
+  findObj= {
+    channel : channel._id,
+    }
+  }
+
+
+  
   //console.log(req.body);
-  messages.find({
-     channel : channel._id,
-  }).skip(start).limit(20).sort({createdAt : -1})
+  messages.find(findObj).skip(start).limit(20).sort({createdAt : -1})
   .then((data) => {
-   // console.log(data);
+    //console.log(data);
     
     res.send({data : data,success : true});
   })

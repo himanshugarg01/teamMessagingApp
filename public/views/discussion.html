@@ -180,15 +180,17 @@
     font-size : 14px;
 }
   </style>
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
-    <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>   
-    </nav>
+  
     <div class="channel-header-top" style="height:50px;padding-top:6px;margin-top: 56px;">
       <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px; margin-left: 100px ;" href="/channel">
         <i class="fa fa-users fa-set" style="font-size: 14px; color: white; border: 2px solid #fff;padding: 7;"></i>
       </a>
+      <div class="col-sm-4 col-sm-push-4 pc" style="float: right;" >
+        <input class="form-control searchChannelDiscover"  ng-model="searchPostString" id="search" ng-change="getMessages()" type="text" placeholder="Search Posts...">
+      </div>
         
         </div>
+       
 
 <div class="container channel-profile-conatiner">
   

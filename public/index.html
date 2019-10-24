@@ -33,9 +33,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
   
 </head>
-<body ng-app="teamApp">
+<body ng-app="teamApp" ng-controller="appController">
     
- 
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
+        <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>  
+        <a class="btn channel-head-btn" style="margin-left :75%; font-size: 14px; color: #fff;" ng-click="logout()" data-toggle="tooltip" data-placement="bottom" title="LOGOUT">
+          <i class="fa fa-sign-out fa-set" style="font-size: 14px; "></i>
+        </a> 
+        </nav>
     <main ng-view="myView"> </main>
 </body>
 </html>

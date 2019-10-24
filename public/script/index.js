@@ -31,6 +31,25 @@ app.factory("currentUser", function () {
   var user={};
   return user;
 })
+app.controller("appController", ["$scope","$rootScope","$http","$location","currentUser", function ($scope,$rootScope,$http,$location,currentUser) {
+  $scope.logout=function()
+{
+  $http({
+    method: 'GET',
+    url: '/logout'
+  }).then(function successCallback(res) {
+      if(res.data.success)
+      {
+      $location.path('/');
+      }
+
+    }, function errorCallback(response) {
+      console.log("err");
+      
+    });
+  
+}
+}]);
 
 
 app.config(["$routeProvider","$locationProvider","$httpProvider",function ($routeProvider, $locationProvider,$httpProvider) {
@@ -60,6 +79,7 @@ app.config(["$routeProvider","$locationProvider","$httpProvider",function ($rout
           templateUrl: "./views/dashboard.html",
           controller: "dashboardController"
           })
+
       .otherwise({
           redirectTo: "/"
       });

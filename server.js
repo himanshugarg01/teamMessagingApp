@@ -34,6 +34,13 @@ app.use(session({secret: "xYzUCAchitkara",resave : true,saveUninitialized : true
 
 app.use('/', require('./routes'));
 
+app.get('/logout',(req, res) => {
+   console.log("logout");
+   req.session.destroy();
+   res.send({success : true});
+   
+})
+
 app.get('/signup',(req, res) => {
     res.sendFile(path.join(__dirname,'public/index.html'));
 })

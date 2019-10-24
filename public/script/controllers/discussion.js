@@ -13,6 +13,8 @@ app.controller("discussionController", ["$scope","$rootScope","$http","$location
    $scope.channel;
    $scope.messages=[];
    $scope.start=0;
+   $scope.searchPostString="";
+   $scope.prevSearch="";
    console.log($routeParams.id);
     
   $scope.getChannel=function()
@@ -77,9 +79,13 @@ app.controller("discussionController", ["$scope","$rootScope","$http","$location
 $scope.getMessages=function()
   {
   //    console.log($rootScope.login);
+      if($scope.prevSearch!=$scope.searchPostString)
+      {
+        $scope.start=0;
+      }
        $http({
           method: 'POST',
-          data : {channel : $scope.channel,start : $scope.start},
+          data : {channel : $scope.channel,start : $scope.start,search : $scope.searchPostString},
           url: '/discussion/getMessages'
         }).then(function successCallback(res) {
             if(res.data.success)
@@ -87,7 +93,15 @@ $scope.getMessages=function()
               //console.log(res.data.data);
               if($scope.start==0)
               $scope.start+=20;
-              
+
+              if($scope.prevSearch!=$scope.searchPostString)
+              {
+               // console.log("array cleared");
+                
+                $scope.messages=[];
+              }
+              $scope.prevSearch=$scope.searchPostString;
+
              $scope.messages=$scope.messages.concat(res.data.data); 
             }
             else

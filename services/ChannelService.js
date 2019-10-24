@@ -241,6 +241,41 @@ function joinChannel(req, res){
             
 }
 
+
+function rejectRequest(req, res){
+  
+  let data;
+  let {channel} = req.body;
+         
+  channels.findOneAndUpdate({
+    _id : channel._id,
+  },
+  {
+    $pull : {invites : req.session.Id},
+  })
+  .then(com => {
+    data=com;
+    })
+    .catch(err => {
+      res.json({error: true});
+    })
+
+  users.findOneAndUpdate({
+    userName : req.session.userName,
+  },
+  {
+    $pull : {requests : channel._id},
+  })
+  .then(user => {
+    res.send({data : data,success:true});
+    })
+  .catch(err => {
+    res.json({error: true});
+    })
+
+            
+}
+
 module.exports = {
     addChannel,
     getChannel,
@@ -250,5 +285,6 @@ module.exports = {
     addUser,
     joinChannel,
     currentUser,
+    rejectRequest,
 
 }
