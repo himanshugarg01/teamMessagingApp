@@ -9,6 +9,8 @@ let messages = new mongoose.Schema({
 });
 
 messages.index({channel : 1});
+messages.index({userName : 1});
+
 
 
 

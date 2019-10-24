@@ -257,6 +257,12 @@
     border-color: #E1ECF4;
     font-size: 14px;
 }
+  h4{
+    color: #0fb1d5;
+  }
+  ul{
+    list-style-type:none
+  }
     
     </style>
  
@@ -287,13 +293,13 @@
     <!--====================================================================-->
     <div class="channel-header-top" style="height:50px;padding-top:6px;">
     <div class="col-sm-12 channel-sub-head">
-        <a class="btn channel-head-btn " style="padding-right: 0px; font-size: 14px;" href="/channel">
+        <a class="btn channel-head-btn " style="padding-right: 0px; font-size: 14px;" data-toggle="tooltip" data-placement="bottom" title="My Channels" href="/channel">
           <i class="fa fa-users fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn active-icon" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="#">
+        <a class="btn channel-head-btn active-icon" style="margin-left:10px;padding-right: 0px; font-size: 14px; " data-toggle="tooltip" data-placement="bottom" title="Dashboard" href="#">
           <i class="fa fa-dashcube fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
+        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " data-toggle="tooltip" data-placement="bottom" title="Search Channels" href="/channel/search">
           <i class="fa fa-search fa-set" style="font-size: 14px;"></i>
         </a>
        
@@ -304,7 +310,7 @@
           <h5>To : </h5>
         </div>
         <div style="width: 200px; float: right; margin-right: 70px;">
-        <input class="form-control dobDate"  ng-model="dateFrom" placeholder="YYYY/MM/DD" ng-change="dashboard()" type="date" autocomplete="off" required="">
+        <input class="form-control dobDate"  ng-model="dateFrom" placeholder="YYYY/MM/DD" ng-change="dashboard()" max="" type="date" autocomplete="off" required="">
         </div>
         <div style="width: 50px; float: right;color: white;">
           <h5>From : </h5>
@@ -320,7 +326,7 @@
         <div class="panel panel-default allSidesSoft channel-panel-main-div">
           <div class="panel-heading channel-panel-heading">
   
-            <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Channels  
+            <p style="color:white;margin-top:6px;font-weight:bold">Top  Channels  
             
             </p>
            
@@ -330,16 +336,15 @@
         <div class="panel-body" style="padding-bottom:0">
   
             <div id="can-create-channel">
-              <ul ng-repeat="x in channels">
+              <ul ng-repeat="channel in topChannels">
                 <li>
                   
-                  <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
-                  <br>
-                  <div ng-repeat="tag in x.tags" style="float:left">
+                  <h4>{{channel.name}}</h4>
+                  
+                  <div ng-repeat="tag in channel.tags" style="float:left">
                       <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
-
                   </div>
-                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
+                  <br>
                   <hr>
                 </li>
 
@@ -354,7 +359,7 @@
       <div class="panel panel-default allSidesSoft channel-panel-main-div">
         <div class="panel-heading channel-panel-heading">
 
-          <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Tags 
+          <p style="color:white;margin-top:6px;font-weight:bold">Top  Tags 
           
           </p>
          
@@ -363,22 +368,17 @@
       </div>
       <div class="panel-body" style="padding-bottom:0">
 
-          <div id="can-create-channel">
-            <ul ng-repeat="x in channels">
-              <li>
-                
-                <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
-                <br>
-                <div ng-repeat="tag in x.tags" style="float:left">
-                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+        <div id="can-create-channel">
+          <ul ng-repeat="tag in topTags">
+            <li>
+              
+              <span class="tag-still" ng-if='tag._id!=""'>{{tag._id}}</span>
+             
+              <hr>
+            </li>
 
-                </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
-                <hr>
-              </li>
-
-            </ul>
-        </div>
+          </ul>
+      </div>
 
       </div>
 
@@ -388,7 +388,7 @@
       <div class="panel panel-default allSidesSoft channel-panel-main-div">
           <div class="panel-heading channel-panel-heading">
 
-            <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Regions 
+            <p style="color:white;margin-top:6px;font-weight:bold">Top  Regions 
             
             </p>
           
@@ -397,22 +397,17 @@
         </div>
         <div class="panel-body" style="padding-bottom:0">
 
-            <div id="can-create-channel">
-              <ul ng-repeat="x in channels">
-                <li>
-                  
-                  <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
-                  <br>
-                  <div ng-repeat="tag in x.tags" style="float:left">
-                      <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+          <div id="can-create-channel">
+            <ul ng-repeat="region in topRegions">
+              <li>
+                
+                <h4>{{region._id}}</h4>
+                <br>
+                <hr>
+              </li>
 
-                  </div>
-                  <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
-                  <hr>
-                </li>
-
-              </ul>
-          </div>
+            </ul>
+        </div>
 
         </div>
 
@@ -422,7 +417,7 @@
       <div class="panel panel-default allSidesSoft channel-panel-main-div">
         <div class="panel-heading channel-panel-heading">
 
-          <p style="color:white;margin-top:6px;font-weight:bold">Top 5 Users  
+          <p style="color:white;margin-top:6px;font-weight:bold">Top  Users  
           
           </p>
         
@@ -431,22 +426,18 @@
       </div>
     <div class="panel-body" style="padding-bottom:0">
 
-          <div id="can-create-channel">
-            <ul ng-repeat="x in channels">
-              <li>
-                
-                <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
-                <br>
-                <div ng-repeat="tag in x.tags" style="float:left">
-                    <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
+      <div id="can-create-channel">
+        <ul ng-repeat="user in topUsers">
+          <li>
+            
+            <h4>{{user._id}}</h4>
+            <br>
 
-                </div>
-                <button class="btn btn-success" data-toggle="modal" data-target="#addMember" ng-click="setChannel(x)" style="margin-right: 10%;margin-left: 90%;" >+</button>
-                <hr>
-              </li>
+            <hr>
+          </li>
 
-            </ul>
-        </div>
+        </ul>
+      </div>
 
       </div>
 

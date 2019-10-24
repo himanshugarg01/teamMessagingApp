@@ -63,7 +63,7 @@ $scope.getChannel =function getChannel()
   function addChannel()
   {
     // console.log($scope.channelName,$scope.description,$scope.tags);
-      if($scope.channelName==""||$scope.description=="")
+      if($scope.channelName==""||$scope.description==""||$scope.tags==null)
       {
         alert("input should not be empty")
       }

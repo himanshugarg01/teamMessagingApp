@@ -257,7 +257,9 @@
     border-color: #E1ECF4;
     font-size: 14px;
 }
-    
+ul{
+    list-style-type:none
+  }
     </style>
  
       
@@ -441,13 +443,13 @@
     <!--====================================================================-->
     <div class="channel-header-top" style="height:50px;padding-top:6px;">
     <div class="col-sm-12 channel-sub-head">
-        <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px;" href="/channel">
+        <a class="btn channel-head-btn active-icon" data-toggle="tooltip" data-placement="bottom" title="My channels" style="padding-right: 0px; font-size: 14px;" href="/channel">
           <i class="fa fa-users fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/dashboard">
+        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " data-toggle="tooltip" data-placement="bottom" title="Dashboard" href="/dashboard">
           <i class="fa fa-dashcube fa-set" style="font-size: 14px;"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
+        <a class="btn channel-head-btn" data-toggle="tooltip" data-placement="bottom" title="Search Channels" style="margin-left:10px;padding-right: 0px; font-size: 14px; " href="/channel/search">
           <i class="fa fa-search fa-set" style="font-size: 14px;"></i>
         </a>
        
@@ -475,7 +477,7 @@
               <ul ng-repeat="x in channels">
                 <li>
                   
-                  <a href="/channel/discuss/{{x._id}}">{{x.name}}</a>
+                  <a href="/channel/discuss/{{x._id}}" style="font-size: 20px;">{{x.name}}</a>
                   <br>
                   <div ng-repeat="tag in x.tags" style="float:left">
                       <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>

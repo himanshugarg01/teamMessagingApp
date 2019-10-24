@@ -12,6 +12,9 @@
   "dependencies": {
     "angular-socket-io": "^0.7.0",
     "angular-ui-select2": "0.0.5",
+    "async": "^3.1.0",
+    "async-parallel": "^1.2.3",
+    "asyncawait": "^1.0.8",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",

@@ -9,7 +9,7 @@ app.controller("searchChannelController", ["$scope","$rootScope","$http","$locat
  $scope.start=0;
 
  $(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() > $(window).height()+100+($scope.start*60)) {
+   if($(window).scrollTop() + $(window).height() > $(window).height()+50+($scope.start*70)) {
        $scope.searchChannel();
     
        $scope.start+=20;

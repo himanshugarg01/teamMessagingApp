@@ -12,7 +12,7 @@ router.use('/login' ,LoginRoute);
 router.use('/signup',SignupRoute);
 router.use('/channel',middleFunc ,ChannelRoute);
 router.use('/discussion',middleFunc ,DiscussionRoute);
-router.use('/dashboard',middleFunc ,DiscussionRoute);
+router.use('/dashboard',middleFunc ,DashboardRoute);
 router.use('/',Default);
 
 module.exports = router;

@@ -122,6 +122,9 @@
     border-color: #E1ECF4;
     font-size : 14px;
   }
+  ul{
+    list-style-type:none
+  }
   </style>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
       <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>   
@@ -139,13 +142,13 @@
     <div class="channel-header-top" style="height:50px;padding-top:6px;margin-bottom : 20px">
     <div class="col-sm-12 channel-sub-head">
       <div class="col-sm-4 channel-sub-head">
-        <a class="btn channel-head-btn " href="/channel">
+        <a class="btn channel-head-btn "data-toggle="tooltip" data-placement="bottom" title="My Channels" href="/channel">
           <i class="fa fa-users fa-set"></i>
         </a>
-        <a class="btn channel-head-btn" style="margin-left:10px; font-size: 14px; " href="/dashboard">
+        <a class="btn channel-head-btn" data-toggle="tooltip" data-placement="bottom" title="Dashboard" style="margin-left:10px; font-size: 14px; " href="/dashboard">
             <i class="fa fa-dashcube fa-set" style="font-size: 14px;"></i>
           </a>
-        <a class="btn channel-head-btn active-icon" style="margin-left:10px" href="/channel/search">
+        <a class="btn channel-head-btn active-icon" data-toggle="tooltip" data-placement="bottom" title="Search Communities" style="margin-left:10px" href="/channel/search">
           <i class="fa fa-search fa-set"></i>
         </a>
        
@@ -170,7 +173,10 @@
     <div class="col-sm-12" id="bigDiv">
         <ul ng-repeat="x in channels">
             <li>
-              {{x.name}}
+              <details>
+                <summary style="color: #0fb1d5; font-size: 18px;">{{x.name}}</summary>
+                <p  style="color :grey; font-size: 14px;"> {{x.description}}</p>
+              </details>
               <br>
               <div ng-repeat="tag in x.tags" style="float:left">
                 <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
