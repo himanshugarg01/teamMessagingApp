@@ -207,6 +207,9 @@
 
           
           <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+              <div ng-if="channel.invites.length==0">
+                  <h4 style="color: gray;">Invites not found </h4>
+                  </div>
             <ul ng-repeat="user in channel.invites track by $index">
               <li >
                 <div>
@@ -246,18 +249,10 @@
           </div>
           <div class="modal-body" >
  
-                  <div class="form-group">
-                      
-                  </div>
-                 
-                  <div class="form-group">
-                          <!-- <label style="color:#707070">Description</label> -->
-                        
-  
-                  </div>
 
           
           <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+            
             <ul ng-repeat="user in channel.users track by $index">
               <li >
                 <div>
@@ -347,6 +342,15 @@
         </div>
     
       <div class="panel-footer"></div>
+      </div>
+      <div ng-if="messages.length==0">
+          <div class="card mb-3 " style="max-width: 100%;margin: 2rem;-webkit-tap-highlight-color:#6F6E6E;">
+              <div class="card-body">
+                <center>
+                <h5 class="card-title" style="color: gray; font-size: 20px;">Start Discussion....</h5>
+              </center>
+              </div>
+            </div>
       </div>
       <div ng-repeat="x in messages">
       <div class="card mb-3 " style="max-width: 100%;margin: 2rem;-webkit-tap-highlight-color:#6F6E6E;">

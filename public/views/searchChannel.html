@@ -162,11 +162,11 @@
     <!--====================================================================-->
   
      <div class="container" style="padding:0">
-       <div class="col-sm-12 nosearch" id="nosearch">
+       <div class="col-sm-12 " ng-if="channels.length==0" id="nosearch">
   
              <br>
-           <div class="container">
-             <div class="search" id="search"><div class="well channel-show-item"><h4>OOPS...!!!</h4>                 <p>Sorry for inconvienence. We didn't find any data.</p></div>                 </div>
+           <div class="container" >
+             <div class="search"  id="search"><div class="well channel-show-item"><h4>OOPS...!!!</h4>                 <p>Sorry for inconvienence. We didn't find any data.</p></div>                 </div>
            </div>
   
          </div>
