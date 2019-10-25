@@ -351,6 +351,9 @@ ul{
 
             
             <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+                <div ng-if="users.length==0">
+                    No Users 
+                    </div>
               <ul ng-repeat="u in users">
                 <li>
                   <div>
@@ -398,6 +401,10 @@ ul{
 
             
             <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+
+                <div ng-if="currentUser.requests.length==0">
+                  No Requests
+                  </div>
               <ul ng-repeat="req in currentUser.requests track by $index">
                 <li >
                   <div>
@@ -476,6 +483,12 @@ ul{
         <div class="panel-body" style="padding-bottom:0">
   
             <div id="can-create-channel">
+                <div ng-if="channels.length==0">
+                  <center>
+                    <h3 style="color: gray;">Create or Join Channel</h3>
+                  </center>
+                    </div>
+
               <ul ng-repeat="x in channels">
                 <li>
                   

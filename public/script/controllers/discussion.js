@@ -3,12 +3,12 @@ app.controller("discussionController", ["$scope","$rootScope","$http","$location
   
 
   $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() > $(document).height()+650+$scope.start*180) {
+    if($(window).scrollTop() + $(window).height() > $(document).height()+650+$scope.start*150) {
         $scope.getMessages();
         $scope.start+=20;
     }
  });
- 
+
    $scope.discussionBody="";
    $scope.channel;
    $scope.messages=[];
@@ -75,6 +75,35 @@ app.controller("discussionController", ["$scope","$rootScope","$http","$location
         }
       
   }
+
+$scope.cancelInvite = function(user)
+  {
+ 
+       $http({
+          method: 'POST',
+          data : {user : user,channel : $scope.channel},
+          url: '/discussion/cancelInvite'
+        }).then(function successCallback(res) {
+            if(res.data.success)
+            {
+             for(i=0;i<$scope.channel.invites.length;i++)
+             {
+               if($scope.channel.invites[i]==user)
+               {
+                $scope.channel.invites.splice(i,1);
+               }
+             }
+            }
+           
+          }, function errorCallback(response) {
+            console.log("err");
+            
+          });
+        
+      
+  }
+
+
 
 $scope.getMessages=function()
   {

@@ -337,7 +337,7 @@
               <ul ng-repeat="channel in topChannels">
                 <li>
                   
-                  <h4>{{channel.name}}</h4>
+                  <h4 style="color:gray">{{channel.name}}</h4>
                   
                   <div ng-repeat="tag in channel.tags" style="float:left">
                       <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
@@ -399,7 +399,7 @@
             <ul ng-repeat="region in topRegions">
               <li>
                 
-                <h4>{{region._id}}</h4>
+                <h4 style="color:gray">{{region._id}}</h4>
                 <br>
                 <hr>
               </li>
@@ -428,7 +428,7 @@
         <ul ng-repeat="user in topUsers">
           <li>
             
-            <h4>{{user._id}}</h4>
+            <h4 style="color:gray">{{user._id}}</h4>
             <br>
 
             <hr>

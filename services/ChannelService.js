@@ -144,6 +144,7 @@ function getUsers(req,res)
 function searchUser(req,res)
 {
     let {search,channel}=req.body;
+   // console.log(search,channel);
     let findObj;
     if(search!='')
         findObj= {

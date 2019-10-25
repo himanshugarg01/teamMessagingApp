@@ -1,5 +1,8 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <style media="screen">
   .channelheader-profile-mobile {
     height: 50px;
@@ -180,45 +183,148 @@
     font-size : 14px;
 }
   </style>
+     <div class="modal fade" id="invited" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <h4 class="modal-title">Invited Users</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" >
+ 
+                  <div class="form-group">
+                      
+                  </div>
+                 
+                  <div class="form-group">
+                          <!-- <label style="color:#707070">Description</label> -->
+                        
+  
+                  </div>
+
+          
+          <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+            <ul ng-repeat="user in channel.invites track by $index">
+              <li >
+                <div>
+                {{user.userName}}
+                <br>
+                
+                <br>
+                <div style="float: right;">
+                <button class="btn btn-warning"  ng-click="cancelInvite(user)" >Cancel</button>
+                
+                </div>
+                <br>
+              </div>
+              <hr>
+              </li>
+            </ul>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="members" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            <h4 class="modal-title">Members of Channel</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" >
+ 
+                  <div class="form-group">
+                      
+                  </div>
+                 
+                  <div class="form-group">
+                          <!-- <label style="color:#707070">Description</label> -->
+                        
+  
+                  </div>
+
+          
+          <div class="modal-body" style="overflow-y: scroll; overflow-x : hidden; max-height: 500;">
+            <ul ng-repeat="user in channel.users track by $index">
+              <li >
+                <div>
+                {{user.userName}}
+                <br>
+                
+                <br>
+                <div style="float: right;">
+               
+                </div>
+                <br>
+              </div>
+              <hr>
+              </li>
+            </ul>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+
   
     <div class="channel-header-top" style="height:50px;padding-top:6px;margin-top: 56px;">
-      <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px; margin-left: 100px ;" href="/channel">
+      <a class="btn channel-head-btn active-icon" style="padding-right: 0px; font-size: 14px; margin-left: 100px ; float: left;" href="/channel">
         <i class="fa fa-users fa-set" style="font-size: 14px; color: white; border: 2px solid #fff;padding: 7;"></i>
       </a>
-      <div class="col-sm-4 col-sm-push-4 pc" style="float: right;" >
+ 
+      <div class="col-sm-4 col-sm-push-4 pc" style="margin-top: 5px; margin-left : 10%" >
         <input class="form-control searchChannelDiscover"  ng-model="searchPostString" id="search" ng-change="getMessages()" type="text" placeholder="Search Posts...">
       </div>
         
         </div>
+
+       
        
 
 <div class="container channel-profile-conatiner">
   
     
-  <div class="col-sm-8 channelprofile-name-pc channelprofile-system">
+  <div class="col-sm-12 channelprofile-name-pc channelprofile-system" style="margin-top: 40px;">
     
     <a href="#" ng-bind="channel.name" class="channelprofile-name-pc">
     
     </a>
+    <button class="btn btn" style="float: right;  margin-left: 20px; margin-top: 5px;" data-toggle="modal" data-target="#invited" ng-click="" >Invited Users</button>
+    <button class="btn btn" style="float: right;  margin-left: 20px; margin-top: 5px;" data-toggle="modal" data-target="#members" ng-click="" >Members</button>
     <br>
     <div ng-repeat="tag in channel.tags" style="float:left">
         <span class="tag-still" ng-if='tag!=""''>{{tag}}</span>
 
     </div>
+    <br>
+   
   </div>
   <hr>
   <div class="container discussion-input discussion-container">
-      <div class="panel panel-default allSidesSoft" style="border-radius:0;border:1px solid rgb(182, 182, 182) !important;">
-        <div class="panel-body" style="padding:5px;background:#f9f9f9;">
-          <div class="col-sm-1 col-xs-3">
-          
-          </div>
-          <p class="col-sm-11 col-xs-9 discussion-heading">
-            Start a discussion
-          </p>
+      <div class="panel panel-default allSidesSoft" style="border-radius:0;border:1px solid rgb(182, 182, 182) !important; margin-top: 100px;;">
+        <div class="panel-body" style="background:#f9f9f9;">
+        
         </div>
     
-
+        
         <!-- <div class="panel-body discussion-panel-body">
           <div class="col-sm-12 col-xs-12" style="padding:30px;border-top: 1px solid white;">
             <input type="text" style="width:100%" ng-model="discussionTitle" class="discussion-input-title" name="title"  placeholder="Enter a discussion title....." id="discussion-title" autocomplete="off" required="">
@@ -226,7 +332,7 @@
         </div> -->
 
         <div class="panel-body discussion-body" id="discussionbody" style="display : block;">
-            <div class="col-sm-12 col-xs-12" style="padding:30px;border-top: 1px solid white;">
+            <div class="col-sm-12 col-xs-12" style="border-top: 1px solid white;">
               <!--Textarea-->
                 <textarea class="discussion-body-textarea" ng-model="discussionBody"  name="details" placeholder="Discuss..." id="discussion-details" autocomplete="off" required=""></textarea>
               <!------------>
@@ -245,10 +351,10 @@
       <div ng-repeat="x in messages">
       <div class="card mb-3 " style="max-width: 100%;margin: 2rem;-webkit-tap-highlight-color:#6F6E6E;">
         <div class="card-body">
-          <h5 class="card-title" style="color: #1C73DD;">{{x.userName}}</h5>
+          <h5 class="card-title" style="color: #1C73DD; font-size: 20px;">{{x.userName}}</h5>
           <small class="text-muted">posted on <i class="text-primary">{{x.createdAt | date : "MMM d, y h:mm:ss a"}}</i></small>
           <hr>
-          <p class="card-text"style="min-height:80px">{{x.message}}</p>
+          <p class="card-text"style="min-height:80px;font-size: large;">{{x.message}}</p>
         </div>
       </div>
     </div>

@@ -13,5 +13,7 @@ router.post('/sendMessage', (req, res) => {
 router.post('/getMessages', (req, res) => {
     services.DiscussionService.getMessages(req, res);
 })
-
+router.post('/cancelInvite', (req, res) => {
+    services.DiscussionService.cancelInvite(req, res);
+})
 module.exports = router;

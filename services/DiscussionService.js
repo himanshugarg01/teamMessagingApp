@@ -9,7 +9,7 @@ function getChannel(req, res){
     //console.log(req.body);
     channels.findOne({
        _id : id
-    })
+    }).populate('invites').populate('users')
     .then((data) => {
      // console.log(data);
       
@@ -72,11 +72,47 @@ function getMessages(req, res){
     res.send({success: false});
   })
 }
+
+
+
+async function cancelInvite(req, res){
+  
+  let data;
+  let {channel,user} = req.body;
+         
+  channels.findOneAndUpdate({
+    _id : channel._id,
+  },
+  {
+    $pull : {invites : user._id},
+  })
+  .then(com => {
+    data=com;
+    })
+    .catch(err => {
+      res.json({error: true});
+    })
+
+  users.findOneAndUpdate({
+    userName : user.userName,
+  },
+  {
+    $pull : {requests : channel._id},
+  })
+  .then(user => {
+    res.send({data : data,success:true});
+    })
+  .catch(err => {
+    res.json({error: true});
+    })
+
+            
+}
 module.exports = {
     getChannel,
     sendMessage,
     getMessages,
-
+    cancelInvite,
 
 
 }
