@@ -65,7 +65,10 @@ function getChannel(req,res)
     users.findOne({
       'userName' : req.session.userName,
     
-    }).populate('requests')
+    }).populate({
+      path: 'requests',
+      select : {_id : 1,name : 1}
+     })
     .then(data => {
       res.send({data : data,success : true});
       
@@ -150,11 +153,13 @@ function searchUser(req,res)
         findObj= {
         userName:  { '$regex' : search, '$options' : 'i' },
         channels :{'$ne' :channel._id },
+        requests : {'$ne' :channel._id},
     }
     else{
         delete findObj;
         findObj= {
           channels :{'$ne' :channel._id },
+          requests : {'$ne' :channel._id},
     }
     }
 

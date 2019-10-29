@@ -1,4 +1,6 @@
 let users = require('../model/users');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 function SignupServices(req, res){
   
@@ -14,23 +16,26 @@ function SignupServices(req, res){
                 res.send({success: false});
             }
             else{
-                let newUser = new users({
-                    'firstName' : firstName,
-                    'lastName' : lastName,
-                    'emailId' : emailId,
-                    'userName' : userName,
-                    'password' : password,
-                    'region' : region,
-
-                });
-                newUser.save().then(data => {
-            //    req.flash('info', 'Signed up successfully!')
-                    res.send({success:true});
-                    })
-                    .catch(err => {
-                    console.error(err)
-                    res.send({success:false});
-                    })
+                bcrypt.hash(password, saltRounds, function(err, hash) {
+                    let newUser = new users({
+                        'firstName' : firstName,
+                        'lastName' : lastName,
+                        'emailId' : emailId,
+                        'userName' : userName,
+                        'password' : hash,
+                        'region' : region,
+    
+                    });
+                    newUser.save().then(data => {
+                //    req.flash('info', 'Signed up successfully!')
+                        res.send({success:true});
+                        })
+                        .catch(err => {
+                        console.error(err)
+                        res.send({success:false});
+                        })
+                  });
+                
             }
         })
         .catch((err)=>{

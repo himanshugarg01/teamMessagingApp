@@ -9,9 +9,16 @@ function getChannel(req, res){
     //console.log(req.body);
     channels.findOne({
        _id : id
-    }).populate('invites').populate('users')
+    }).populate({
+       path: 'invites',
+       select : {_id : 1,userName : 1}
+      })
+    .populate({
+      path: 'users',
+      select : {_id : 1,userName : 1}
+     })
     .then((data) => {
-     // console.log(data);
+      console.log("dataa......"+data);
       
       res.send({data : data,success : true});
     })
