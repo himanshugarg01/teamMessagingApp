@@ -37,7 +37,7 @@
     
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="border-radius: 0px; position : fixed">
         <a class="navbar-brand" style="font-size: 20px;font-weight: bold;" href="#" >Team Messaging App</a>  
-        <a class="btn channel-head-btn" style="margin-left :70%; font-size: 14px; color: #fff;" ng-click="logout()" data-toggle="tooltip" data-placement="bottom" title="LOGOUT">
+        <a ng-if='status' class="btn channel-head-btn" style="margin-left :70%; font-size: 14px; color: #fff;" ng-click="logout()" data-toggle="tooltip" data-placement="bottom" title="LOGOUT">
           LOGOUT
         </a> 
         </nav>

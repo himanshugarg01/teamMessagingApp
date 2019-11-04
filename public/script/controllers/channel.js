@@ -11,7 +11,6 @@ app.controller("channelController", ["$scope","$rootScope","$http","$location","
   $scope.start=0;
   $scope.currentUser=currentUser.user;
   
-  
 
 
   $(window).scroll(function() {

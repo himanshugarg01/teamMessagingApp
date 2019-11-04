@@ -9,8 +9,7 @@ app.controller("dashboardController", ["$scope","$rootScope","$http","$location"
   $scope.topChannels=[];
   $scope.topUsers=[];
   $scope.topTags=[];
-
-  
+ 
 
   
 

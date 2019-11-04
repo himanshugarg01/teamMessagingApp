@@ -24,7 +24,8 @@ var app = angular.module("teamApp", ["ngRoute",'btford.socket-io'])
 }])
 .config(['$httpProvider',function($httpProvider) {
 	//Http Intercpetor to check auth failures for xhr requests
-	$httpProvider.interceptors.push('authHttpResponseInterceptor');
+  $httpProvider.interceptors.push('authHttpResponseInterceptor');
+ // $rootScope.status=true;
 }]);
 
 app.factory("currentUser", function () {
@@ -32,6 +33,7 @@ app.factory("currentUser", function () {
   return user;
 })
 app.controller("appController", ["$scope","$rootScope","$http","$location","currentUser", function ($scope,$rootScope,$http,$location,currentUser) {
+  $rootScope.status=true;
   $scope.logout=function()
 {
   $http({

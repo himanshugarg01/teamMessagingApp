@@ -3,8 +3,8 @@ app.controller("loginController", ["$scope","$rootScope","$http","$location","cu
   
   $scope.userName="";
   $scope.password="";
- 
-   
+
+  $rootScope.status=false; 
  
   function getLogin()
   {
@@ -17,7 +17,7 @@ app.controller("loginController", ["$scope","$rootScope","$http","$location","cu
             if(res.data.success)
             {
               currentUser.user=res.data.data;
-              
+              $rootScope.status=true;
             $location.path('/channel');
             }
             else

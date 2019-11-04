@@ -5,7 +5,6 @@ app.controller("searchChannelController", ["$scope","$rootScope","$http","$locat
  $scope.searchString="";
  $scope.prevSearchString="";
  $scope.channels=[];
-
  $scope.start=0;
 
  $(window).scroll(function() {

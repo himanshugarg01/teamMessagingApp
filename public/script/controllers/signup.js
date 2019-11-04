@@ -1,5 +1,5 @@
 
-app.controller("signupController", ["$scope","$http","$location", function ($scope,$http,$location) {
+app.controller("signupController", ["$scope","$http","$location",'$rootScope', function ($scope,$http,$location,$rootScope) {
   
   $scope.userName="";
   $scope.emailId="";
@@ -9,6 +9,7 @@ app.controller("signupController", ["$scope","$http","$location", function ($sco
   $scope.lastName="";
   $scope.region="";
   $scope.incorrectUName=false;
+  $rootScope.status=false;
   function signUp()
   {
     if($scope.password!=$scope.password1)
